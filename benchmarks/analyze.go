@@ -125,15 +125,13 @@ func must(err error) {
 }
 
 func plotit(path, title string, values []float64, names []string) {
-	plot.DefaultFont = "Helvetica"
+	//plot.DefaultFont = "Helvetica"
 	var groups []plotter.Values
 	for _, value := range values {
 		groups = append(groups, plotter.Values{value})
 	}
-	p, err := plot.New()
-	if err != nil {
-		panic(err)
-	}
+
+	p := plot.New()
 	p.Title.Text = title
 	p.Y.Tick.Marker = commaTicks{}
 	p.Y.Label.Text = "Req/s"
